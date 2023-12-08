@@ -1,10 +1,10 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
-        int c=0;
-        for (int i=0; i<nums.length; i++) {
+        int c=0, t=nums.length;
+        for (int i=0; i<t; i++) {
             nums[i-c]=nums[i];
             if (nums[i]==val) ++c;
         }
-        return nums.length-c;
+        return t-c;
     }
 }
