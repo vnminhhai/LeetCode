@@ -1,6 +1,7 @@
 class Solution {
     public int[][] generateMatrix(int n) {
-        int x=n,y=n-1,ix=0,iy=0, nums[][]=new int[n][n], c=1;
+        short ix=0,iy=0, c=1;
+        int x=n,y=n-1,nums[][]=new int[n][n];
         boolean tangy=true, tangx=true, luotx=true;
         while (c<=n*n) {
             if (luotx) {
