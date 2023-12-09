@@ -20,8 +20,9 @@ class Solution {
         return a;
     }
     void traverse(List l, TreeNode n) {
-        if(n.left!=null) traverse(l, n.left);
+        if(n!=null) {
+        traverse(l, n.left);
         l.add(n.val);
-        if(n.right!=null) traverse(l, n.right);
+        traverse(l, n.right);}
     }
 }
