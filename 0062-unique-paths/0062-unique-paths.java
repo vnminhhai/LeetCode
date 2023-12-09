@@ -1,17 +1,28 @@
 class Solution {
-    public int uniquePaths(int m, int n) {
-        Double mf=1.0;
-        if (m>n)
-        for (int i=1; i<=m-1; i++) {
-            mf*=i+n-1;
-            mf/=i;
+
+
+    static int helper(int m, int n, int[][] dp){
+        int a = dp.length;
+        int b = dp[0].length;
+        if(m>=a || n>=b) return 0;
+        if(m==a-1 || n==b-1){
+            return dp[m][n]=1;
         }
-        else {
-            for (int i=1; i<=n-1; i++) {
-                mf*=i+m-1;
-                mf/=i;
+
+        if(dp[m][n]!=-1) return dp[m][n];
+        else{
+            return dp[m][n] = (helper(m+1,n,dp)+helper(m,n+1,dp));
+        }
+    }
+    public int uniquePaths(int m, int n) {
+
+        int dp[][] = new int[m][n];
+
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                dp[i][j] = -1;
             }
         }
-        return mf.intValue();
+        return helper(0,0,dp);
     }
 }
