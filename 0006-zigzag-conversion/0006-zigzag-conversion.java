@@ -1,21 +1,29 @@
 class Solution {
-    public String convert(String s, int numRows) {
-        if (numRows==1) return s;
-        String st[] = new String[numRows], r="";
-        short t=0;
-        boolean tang = false;
-        for (int i=0; i<numRows; i++) {
-            st[i]="";
+    public String convert(String inputString, int numRows) {
+        if (numRows == 1) return inputString;
+
+        List<StringBuilder> rows = new ArrayList<>();
+        for (int i = 0; i < Math.min(numRows, inputString.length()); i++) {
+            rows.add(new StringBuilder());
         }
-        for (int i=0; i<s.length(); i++) {
-            st[t]+=s.charAt(i);
-            if (i%(numRows-1)==0) tang=!tang;
-            if (tang) ++t;
-            else --t;
+
+        int direction = -1;
+        int currentRow = 0;
+
+        for (char c : inputString.toCharArray()) {
+            rows.get(currentRow).append(c);
+            currentRow += (direction == -1) ? 1 : -1;
+
+            if (currentRow == 0 || currentRow == numRows - 1) {
+                direction = -direction;
+            }
         }
-        for (int i=0; i<numRows; i++) {
-            r+=st[i];
+
+        StringBuilder result = new StringBuilder();
+        for (StringBuilder row : rows) {
+            result.append(row);
         }
-        return r;
+
+        return result.toString();
     }
 }
