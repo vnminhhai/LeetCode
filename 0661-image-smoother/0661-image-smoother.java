@@ -1,6 +1,6 @@
 class Solution {
     public int[][] imageSmoother(int[][] img) {
-        int m= img.length, n=img[0].length, res[][]=new int[m][n];
+        int m= img.length, n=img[0].length;
         for (int i=0; i<m; i++) {
             for (int j=0; j<n; j++) {
                 int c=0, s=0;
@@ -9,12 +9,17 @@ class Solution {
                     for (int u=j-1; u<=j+1; u++) {
                         if (u<0||u>=n) continue;
                         ++c;
-                        s+=img[t][u];
+                        s+=img[t][u]%256;
                     }
                 }
-                res[i][j]=s/c;
+                img[i][j]+=(s/c)*256;
             }
         }
-        return res;
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                img[i][j]/=256;
+            }
+        }
+        return img;
     }
 }
