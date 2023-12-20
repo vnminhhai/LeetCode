@@ -1,7 +1,7 @@
 class Solution {
     public String intToRoman(int num) {
         String res="";
-        switch (((Double)(Math.log10(num))).intValue()) {
+        switch ((int) Math.log10(num)) {
             case 3:
                 int c=num/1000;
                 num=num%1000;
