@@ -24,6 +24,6 @@ class Solution {
         int dl=dep(n.left), dr=dep(n.right);
         if (dl==-1||dr==-1) return -1;
         if (Math.abs(dl-dr)>1) return -1;
-        return Math.max(dep(n.left),dep(n.right))+1;
+        return Math.max(dl,dr)+1;
     }
 }
