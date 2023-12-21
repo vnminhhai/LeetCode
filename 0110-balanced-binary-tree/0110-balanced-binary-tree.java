@@ -16,13 +16,14 @@
 class Solution {
     public boolean isBalanced(TreeNode root) {
         if (root==null) return true;
-        int t=dep(root.left,0)-dep(root.right,0);
-        if (t>1||t<-1) return false;
-        else return isBalanced(root.left)&&isBalanced(root.right);
+        if (dep(root)==-1) return false;
+        return true;
     }
-    int dep(TreeNode n, int l) {
-        if (n==null) return l;
-        n.val=Math.max(dep(n.left,l+1),dep(n.right,l+1));
-        return n.val;
+    int dep(TreeNode n) {
+        if (n==null) return 0;
+        int dl=dep(n.left), dr=dep(n.right);
+        if (dl==-1||dr==-1) return -1;
+        if (Math.abs(dl-dr)>1) return -1;
+        return Math.max(dep(n.left),dep(n.right))+1;
     }
 }
