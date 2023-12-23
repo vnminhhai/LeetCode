@@ -10,19 +10,17 @@ class Solution {
         m.put('7', new ArrayList<>(Arrays.asList('p', 'q', 'r','s')));
         m.put('8', new ArrayList<>(Arrays.asList('t', 'u', 'v')));
         m.put('9', new ArrayList<>(Arrays.asList('w', 'x', 'y','z')));
-        Queue<String> q= new LinkedList();
-        q.offer("");
-        List<String> res=new ArrayList<>();
+        List<String> q= new LinkedList();
+        q.addLast("");
         for (int i=0; i<digits.length(); i++) {
-            if (q.peek().length()==i) {
-                String sb= q.poll();
+            if (q.getFirst().length()==i) {
+                String sb= q.removeFirst();
                 for (Character nc : m.get(digits.charAt(i))) {
-                    q.offer(sb+nc);
+                    q.addLast(sb+nc);
                 }
                 --i;
             }
         }
-        while (!q.isEmpty()) res.add(q.poll());
-        return res;
+        return q;
     }
 }
