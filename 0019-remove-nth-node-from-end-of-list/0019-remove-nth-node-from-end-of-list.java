@@ -10,7 +10,7 @@
  */
 class Solution {
     static int size;
-    static ListNode dummy, prev;
+    static ListNode dummy;
     public ListNode removeNthFromEnd(ListNode head, int n) {
         dummy=head;
         size=0;
@@ -18,14 +18,14 @@ class Solution {
             ++size;
             dummy=dummy.next;
         }
-        prev=head;
+        dummy=head;
         while (--size>n) {
-            prev=prev.next;
+            dummy=dummy.next;
         }
         if (size==n) {
-            prev.next=prev.next.next;
+            dummy.next=dummy.next.next;
         }
-        else head=prev.next;
+        else head=dummy.next;
         return head;
     }
 }
