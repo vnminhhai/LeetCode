@@ -14,8 +14,9 @@
  * }
  */
 class Solution {
+    static List<Integer> list;
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list= new ArrayList<>();
+        list= new ArrayList<>();
         preTraverseToList(root, list);
         return list;
     }
