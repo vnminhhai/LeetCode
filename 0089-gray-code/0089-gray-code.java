@@ -1,5 +1,5 @@
 class Solution {
-    List<Integer> list;
+    static List<Integer> list;
     public List<Integer> grayCode(int n) {
         list= new ArrayList<>();
         list.add(0);
