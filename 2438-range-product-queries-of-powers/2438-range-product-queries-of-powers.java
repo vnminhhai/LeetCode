@@ -1,6 +1,6 @@
 class Solution {
     public int[] productQueries(int n, int[][] queries) {
-        ArrayList<Integer> powers = new ArrayList<>();
+        List<Integer> powers = new LinkedList<>();
         int currentPower = 1;
         while (n > 0) {
             if (n % 2 == 1) {
@@ -10,9 +10,10 @@ class Solution {
             n=n>>>1;
         }
         int[] result = new int[queries.length];
-
+        
+        long temp;
         for (int i=0; i<queries.length; i++) {
-            long temp = 1;
+            temp = 1;
             for (int j=queries[i][0]; j<=queries[i][1]; j++) {
                 temp = (temp * powers.get(j)) % 1000000007;
             }
